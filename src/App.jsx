@@ -1,16 +1,10 @@
-
-import { CarreraTecnicaList } from "./components/CarreraTecnicaList"
-const initCarrerasTecnicas =[
-    { codigo: '1', nombre: 'Programación con java'},
-    {codigo: '2', nombre: 'Desarrollo de aplicaciones web'}
-]
+import { Provider } from 'react-redux';
+import { store } from './store/store';
+import { AppRoutes } from './AppRoutes';
 export const App = () => {
     return (
-        <>
-        <h1>Carreras Técnicas</h1>
-        <CarreraTecnicaList carreraTecnicas={initCarrerasTecnicas}/>
-
-        </>
+        <Provider store={store}>
+            <AppRoutes />
+        </Provider>
     )
-
 }
