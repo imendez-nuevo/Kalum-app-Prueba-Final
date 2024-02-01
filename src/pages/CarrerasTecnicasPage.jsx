@@ -3,13 +3,21 @@ import { useEffect } from "react"
 import { CarreraTecnicaModalForm } from "../components/carreras-tecnicas/CarreraTecnicaModalForm"
 import { useCarreraTecnica } from "../hooks/useCarreraTecnica"
 import { CarreraTecnicaList } from "../components/carreras-tecnicas/CarreraTecnicaList";
+import { useJornadas } from "../hooks/useJornadas";
+import {useExamenAdmision} from "../hooks/useExamenAdmision"
 
 export const CarrerasTecnicasPage = () => {
   //const {visibleForm,handlerOpenForm } = useContext(CarreraTecnicaContext);
   const { getCarrerasTecnicas, visibleForm, handlerOpenForm } = useCarreraTecnica();
+  const {getJornadas} = useJornadas();
+  const {getExamenesAdmision} = useExamenAdmision();
+
   useEffect(() => {
     getCarrerasTecnicas();
+    getJornadas();
+    getExamenesAdmision();
   }, []);
+
   return (
     <>
       {!visibleForm || <CarreraTecnicaModalForm />}

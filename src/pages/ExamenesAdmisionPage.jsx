@@ -2,11 +2,21 @@ import { useEffect } from "react"
 import { ExamenAdmisionModalForm } from "../components/examenes-admision/ExamenAdmisionModalForm";
 import { useExamenAdmision } from "../hooks/useExamenAdmision"
 import { ExamenAdmisionList } from "../components/examenes-admision/ExamenAdmisionList"
+import { useCarreraTecnica } from "../hooks/useCarreraTecnica";
+import { useJornadas } from "../hooks/useJornadas";
+
 export const ExamenesAdmisionPage = () => {
   const { getExamenesAdmision, visibleForm, handlerOpenForm } = useExamenAdmision();
-  useEffect(() => {
-    getExamenesAdmision();
-  }, []);
+  const {getCarrerasTecnicas}= useCarreraTecnica();
+
+  const {getJornadas} = useJornadas();
+
+    useEffect(() => {
+      getExamenesAdmision();
+      getCarrerasTecnicas();
+      getJornadas();
+    }, []);
+
   return (
     <>
       {!visibleForm || <ExamenAdmisionModalForm />}

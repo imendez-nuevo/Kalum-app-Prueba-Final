@@ -2,11 +2,20 @@ import { useEffect } from "react"
 import { JornadasList } from "../components/jornadas/JornadasList"
 import { JornadasModalForm } from "../components/jornadas/JornadasModalForm"
 import { useJornadas } from "../hooks/useJornadas"
+import { useCarreraTecnica } from "../hooks/useCarreraTecnica"
+import { useExamenAdmision } from "../hooks/useExamenAdmision"
+
 export const JornadasPage = () => {
   const { getJornadas, visibleForm, handlerOpenForm } = useJornadas();
+  const {getCarrerasTecnicas} = useCarreraTecnica();
+  const {getExamenesAdmision} = useExamenAdmision();
   useEffect(() => {
+
     getJornadas();
+    getCarrerasTecnicas();
+    getExamenesAdmision();
   }, []);
+
   return (
     <>
       {!visibleForm || <JornadasModalForm />}
